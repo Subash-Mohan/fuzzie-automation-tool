@@ -44,10 +44,14 @@ const ProfilePicture = ({ userImage, onDelete, onUpload }: Props) => {
             </Button>
           </>
         ) : (
+          <>
             <FileUploaderRegular
-                pubkey="7fe2eb959870e3f4745a"
-                onChange={onUpload}
+                pubkey={process.env.NEXT_PUBLIC_UPLOAD_CARE_PUBLIC_KEY}
+                onChange={(file) => {
+                  onUpload(JSON.stringify(file))
+                }}
             />
+            </>
         )}
       </div>
     </div>
