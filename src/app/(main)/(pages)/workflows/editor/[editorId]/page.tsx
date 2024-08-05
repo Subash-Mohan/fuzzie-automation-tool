@@ -1,9 +1,15 @@
+import { ConnectionsProvider } from "@/providers/connections-provider";
+import EditorProvider, { EditorContext } from "@/providers/editor-provider";
 
 const EditorPage = () => {
 
   return (
-    <div>
-      <h1>Editor Page</h1>
+    <div className="h-full">
+      <EditorProvider>
+        <ConnectionsProvider>
+          <></>
+        </ConnectionsProvider>
+      </EditorProvider>
     </div>
   );
 };
