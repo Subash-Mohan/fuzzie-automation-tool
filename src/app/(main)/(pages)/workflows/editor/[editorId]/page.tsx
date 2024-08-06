@@ -1,5 +1,6 @@
 import { ConnectionsProvider } from "@/providers/connections-provider";
 import EditorProvider, { EditorContext } from "@/providers/editor-provider";
+import EditorCanvas from "./_components/editor-canvas";
 
 const EditorPage = () => {
 
@@ -7,7 +8,7 @@ const EditorPage = () => {
     <div className="h-full">
       <EditorProvider>
         <ConnectionsProvider>
-          <></>
+          <EditorCanvas/>
         </ConnectionsProvider>
       </EditorProvider>
     </div>
