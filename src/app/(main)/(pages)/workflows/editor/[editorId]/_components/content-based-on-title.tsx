@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { onContentChange } from "@/lib/editor-utils";
 import GoogleFileDetails from "./google-file-details";
+import GoogleDriveFiles from "./google-drive-files";
+import ActionButton from "./action-button";
 
 export interface Option {
   value: string;
@@ -104,6 +106,13 @@ const ContentBasedOnTitle = ({
               </CardContent>
             </Card>
           )}
+          {title === "Google Drive" && <GoogleDriveFiles />}
+          <ActionButton
+            currentService={title}
+            nodeConnection={nodeConnection}
+            channels={selectedSlackChannels}
+            setChannels={setSelectedSlackChannels}
+          />
         </div>
       </Card>
     </AccordionContent>
