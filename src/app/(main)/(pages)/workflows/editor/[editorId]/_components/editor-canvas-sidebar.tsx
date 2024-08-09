@@ -15,6 +15,14 @@ import {
 } from "@/components/ui/card";
 import EditorCanvasIconHelper from "./editor-canvas-icon-helper";
 import { onDragStart } from "@/lib/editor-utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import RenderConnectionAccordion from "./render-connection-accordion";
+import RenderOutputAccordion from "./render-output-accordion";
 
 type Props = {
   nodes: EditorNodeType[];
@@ -62,6 +70,31 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
           <div className="px-2 py-4 text-center text-xl font-bold">
             {state.editor.selectedNode.data.title}
           </div>
+          <Accordion type="multiple">
+            <AccordionItem value="Options" className="border-y-[1px] px-2">
+              <AccordionTrigger className="!no-underline">
+                Account
+              </AccordionTrigger>
+              <AccordionContent>
+                {CONNECTIONS.map((connection) => (
+                  <RenderConnectionAccordion
+                    key={connection.title}
+                    connection={connection}
+                    state={state}
+                  ></RenderConnectionAccordion>
+                ))}{" "}
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="Expected Output" className="px-2">
+              <AccordionTrigger className="!no-underline">
+                Action
+              </AccordionTrigger>
+              <RenderOutputAccordion
+                state={state}
+                nodeConnection={nodeConnection}
+              />
+            </AccordionItem>
+          </Accordion>
         </TabsContent>
       </Tabs>
     </aside>
