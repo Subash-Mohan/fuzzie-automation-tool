@@ -144,6 +144,12 @@ const EditorCanvas = (props: Props) => {
     dispatch({ type: "LOAD_DATA", payload: { edges, elements: nodes } });
   }, [nodes, edges]);
 
+  useEffect(() => {
+    console.log(state.editor.elements);
+    console.log(nodes);
+    console.log(edges);
+  }, [state.editor.elements]);
+
   const nodeTypes = useMemo(
     () => ({
       Action: EditorCanvasCardSingle,
